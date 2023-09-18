@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sohail Adeli - Accessible Locations</title>
+</head>
+<body>
+    <h1>Accessible Locations</h1>
+    <ul>
+        {% for location in locations %}
+        <li>
+            {{ location.name }} - {{ location.address }}<br>
+            Accessible for Handicapped: {{ location.accessible_for_handicapped }}
+            {% for image in location.locationimage_set.all %}
+            <img src="{{ image.image.url }}" alt="Accessibility Image">
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_location' %}">Add a Location</a>
+</body>
+</html>
